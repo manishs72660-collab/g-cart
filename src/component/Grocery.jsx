@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router"
 import Shimmer from "./Shimmer";
 import Navbar from "./nav";
 function Grocery(){
@@ -14,6 +15,7 @@ function Grocery(){
 
 function Grocerycard({ groceryitem }) {
   return (
+<Link to={`/products/detail/${groceryitem.id}`}>
     <div className="w-64 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
 
       {/* Image Section */}
@@ -65,6 +67,7 @@ function Grocerycard({ groceryitem }) {
 
       </div>
     </div>
+    </Link>
   );
 }
 

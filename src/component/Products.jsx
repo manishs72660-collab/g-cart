@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Navbar from "./nav";
 import Rating from "./Rating";
+import ProductShimmer from "./ProductShimmer";
 function Productdetail(){
     let {id} = useParams();
     const[products,setproducts]=useState(null);
@@ -22,6 +23,14 @@ function Productdetail(){
             setisadd(true);
         }
     }
+  if(products===null){
+    return(
+      <>
+      <ProductShimmer/>
+      </>
+    )
+  }
+
 
     return(
         <>

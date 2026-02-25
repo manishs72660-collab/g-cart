@@ -1,4 +1,5 @@
 import React from "react";
+import { Search, ShoppingCart, User } from "lucide-react";
 import image from "../first.png"
 import image1 from "../second.png"
 import { Link } from "react-router";
@@ -7,19 +8,54 @@ export default function Header(){
     return(
     <>
     <header className="bg-green-400">
-        <div className="flex justify-between max-w-[90%] container mx-auto  p-4 items-center">
-            <div>
-            <img src="https://i.pinimg.com/736x/f0/7d/3c/f07d3cd69f0e5b3c55733337f8168833.jpg" alt="" className="h-15 w-20 rounded-2xl" />
-            </div>
-            <div>
-                <input type="text" placeholder="search here..." className="w-[500px] border h-10 p-5 bg-white text-xl font-bold ml-4" />
-            </div>
-            <div>
-                <button className="border-2 p-1 ml-5 w-25 rounded-xl text-2xl bg-white text-black font-bold">Login</button>
-                <button className="text-xl font-bold text-black ml-5 p-1">Become a seller</button>
-                <button className="text-xl font-bold text-black ml-5 p-1">🛒 Add to Cart(0)</button>
-            </div>
-        </div>
+<div className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 border-b border-white/20 shadow-lg">
+  <div className="max-w-[1300px] mx-auto flex justify-between items-center px-8 py-4">
+    
+    {/* Logo Section */}
+    <div className="flex items-center space-x-3">
+      <img
+        src="https://i.pinimg.com/736x/f0/7d/3c/f07d3cd69f0e5b3c55733337f8168833.jpg"
+        alt="Logo"
+        className="h-12 w-16 rounded-2xl object-cover shadow-md"
+      />
+      <h1 className="text-2xl font-extrabold bg-gradient-to-r from-green-600 to-purple-500 bg-clip-text text-transparent tracking-wide">
+        LuxeCart
+      </h1>
+    </div>
+
+    {/* Right Section */}
+    <div className="flex items-center space-x-6">
+      
+      {/* Search Button */}
+      <button className="p-3 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 transition duration-300 shadow-md">
+        <Search size={20} className="text-gray-800" />
+      </button>
+
+      {/* Become Seller */}
+      <button className="text-gray-800 font-semibold hover:text-green-800 transition duration-300 text-xl font-bold">
+        Become a Seller
+      </button>
+
+      {/* Login Button */}
+      <button className="flex items-center space-x-2 px-5 py-2 rounded-full bg-gradient-to-r from-green-600 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 transition duration-300">
+        <User size={18} />
+        <span>Login</span>
+      </button>
+
+      {/* Cart */}
+      <button className="relative flex items-center space-x-2 p-2 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 transition duration-300 shadow-md">
+        <ShoppingCart size={20} className="text-gray-800" />
+        <span className="font-semibold text-gray-800">Cart</span>
+
+        {/* Cart Badge */}
+        <span className="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md animate-pulse">
+          0
+        </span>
+      </button>
+
+    </div>
+  </div>
+</div>
 
        <div className="relative min-h-screen flex items-center justify-center">
 

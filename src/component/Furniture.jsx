@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer"
 import Navbar from "./nav";
+import {Link} from "react-router"
 function Furniture(){
     const[furnituredata,setfurnituredata]=useState([]);
     useEffect(()=>{
@@ -13,6 +14,7 @@ function Furniture(){
     },[])
     function Furniturecard({ furnitureitem }) {
   return (
+    <Link to={`/products/detail/${furnitureitem.id}`}>
     <div className="w-80 bg-white rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
 
       {/* Image Section */}
@@ -62,6 +64,7 @@ function Furniture(){
 
       </div>
     </div>
+    </Link>
   );
 }
 
