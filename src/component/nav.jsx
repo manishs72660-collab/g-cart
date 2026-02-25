@@ -1,18 +1,38 @@
-import { Briefcase, Search, Tag, HelpCircle, User, ShoppingCart, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import {
+  Briefcase,
+  Search,
+  Tag,
+  HelpCircle,
+  User,
+  ShoppingCart,
+  ChevronDown,
+  X,
+} from "lucide-react";
 
 export default function Navbar() {
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchClick = () => {
+    setShowSearch(!showSearch);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log("Searching for:", searchQuery);
+  };
+
   return (
-    <nav className="w-full bg-white shadow-sm px-6 md:px-12 py-3">
+    <nav className="relative w-full bg-white shadow-sm px-6 md:px-12 py-3">
       <div className="flex items-center justify-between">
 
         {/* Left Section */}
         <div className="flex items-center gap-6">
-          {/* Logo */}
           <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
             G
           </div>
 
-          {/* Other Dropdown */}
           <div className="flex items-center gap-1 font-semibold cursor-pointer hover:text-green-500 transition">
             Other
             <ChevronDown size={16} />
@@ -27,7 +47,11 @@ export default function Navbar() {
             Swiggy Corporate
           </div>
 
-          <div className="flex items-center gap-2 cursor-pointer hover:text-green-500 transition">
+          {/* Search Button */}
+          <div
+            onClick={handleSearchClick}
+            className="flex items-center gap-2 cursor-pointer hover:text-green-500 transition"
+          >
             <Search size={18} />
             Search
           </div>
@@ -57,9 +81,40 @@ export default function Navbar() {
               0
             </span>
           </div>
-
         </div>
       </div>
+
+      {/* Floating Search Box */}
+      {showSearch && (
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-20 w-1/2 bg-white shadow-xl rounded-xl p-5 border z-50">
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flex items-center gap-3"
+          >
+            <input
+              type="text"
+              placeholder="Search for restaurants, food..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              autoFocus
+            />
+
+            <button
+              type="submit"
+              className="bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 transition"
+            >
+              Search
+            </button>
+
+            <X
+              size={20}
+              className="cursor-pointer text-gray-500 hover:text-red-500"
+              onClick={() => setShowSearch(false)}
+            />
+          </form>
+        </div>
+      )}
     </nav>
   );
 }
