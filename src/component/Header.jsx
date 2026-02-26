@@ -1,8 +1,8 @@
 import React from "react";
 import { Search, ShoppingCart, User } from "lucide-react";
+import {Link} from "react-router"
 import image from "../first.png"
 import image1 from "../second.png"
-import { Link } from "react-router";
 
 export default function Header(){
     return(
@@ -25,12 +25,12 @@ export default function Header(){
 
     {/* Right Section */}
     <div className="flex items-center space-x-6">
-      
+      <Link to="/search/product">
       {/* Search Button */}
-      <button className="p-3 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 transition duration-300 shadow-md">
+      <button className="p-3 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 hover:cursor-pointer transition duration-300 shadow-md">
         <Search size={20} className="text-gray-800" />
       </button>
-
+      </Link>
       {/* Become Seller */}
       <button className="text-gray-800 font-semibold hover:text-green-800 transition duration-300 text-xl font-bold">
         Become a Seller

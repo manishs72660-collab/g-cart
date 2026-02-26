@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router"
 import {
   Briefcase,
   Search,
@@ -39,10 +40,11 @@ export default function Navbar() {
           <div
             className="flex items-center gap-2 cursor-pointer hover:text-green-500 transition"
           >
-           <button className="p-3 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 transition duration-300 shadow-md">
+          <Link to="/search/product">
+           <button className="p-3 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 hover:cursor-pointer transition duration-300 shadow-md">
                    <Search size={15} className="text-gray-800" />
             </button>
-           
+           </Link>
           </div>
 
           <div className="flex items-center gap-2 cursor-pointer hover:text-green-500 transition relative">

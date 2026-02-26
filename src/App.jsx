@@ -6,6 +6,7 @@ import Fashion from './component/Fashion';
 import Furniture from './component/Furniture';
 import Productdetail from './component/Products';
 import { BrowserRouter,Route,Routes} from "react-router";
+import Searchpage from './component/Searchpage';
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
       <Route path='/fashion' element={<Fashion/>}></Route>
       <Route path='/furniture' element={<Furniture/>}></Route>
       <Route path="/products/detail/:id" element={<Productdetail/>}></Route>
+      <Route path="/search/product" element={<Searchpage/>}></Route>
     </Routes>
    </BrowserRouter>
    {/* <Furniture/> */}
