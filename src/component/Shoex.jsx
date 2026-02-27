@@ -58,7 +58,7 @@ function Shoescard({ shoesitem }) {
           </p>
 
           <button className="bg-black text-white text-sm px-4 py-2 rounded-xl hover:bg-gray-800 transition">
-            Add
+            view
           </button>
         </div>
 

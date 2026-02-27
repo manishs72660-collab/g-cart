@@ -61,7 +61,7 @@ function Shirt(){
           </div>
 
           <button className="bg-black text-white text-xs px-4 py-1.5 rounded-lg hover:bg-gray-800 transition">
-            Add
+            view
           </button>
         </div>
 

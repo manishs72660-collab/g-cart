@@ -4,7 +4,6 @@ import Shoes from "./Shoex";
 import Watch from "./watch";
 import Navbar from "./nav";
 function Fashion(){
-  
     return(
         <>
         <Navbar/>

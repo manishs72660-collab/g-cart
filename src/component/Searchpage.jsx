@@ -4,6 +4,7 @@ import { Link } from "react-router";
 function Searchpage(){
    const[name,setname]=useState("");
    const [searchdata,setsearchdata]=useState(null);
+   const[selected,setselected]=useState(null);
    useEffect(()=>{
      async function fetchdata() {
         const response=await fetch(`https://dummyjson.com/products/search?q=${name}`);
@@ -13,7 +14,7 @@ function Searchpage(){
      if(name.length>2){
        fetchdata();
      }
-   },[name])
+   },[name,selected])
    console.log(searchdata);
    console.log(name);
 
@@ -74,7 +75,52 @@ function Searchcard({ searchitem }) {
     </Link>
   );
 }
-   return(
+if(selected==="price"){
+  return(
+    <>
+     <Navbar/>
+    <div className="max-w-[80%] container mx-auto ">
+    <input className="w-full h-7 border bg-gray-200 text-xl font-bold text-black p-7 rounded-3xl mt-5" type="text" placeholder="Search here..." 
+    value={name}
+    onChange={(e)=>setname(e.target.value)}
+    />
+    </div>
+    {searchdata && searchdata.length > 0 && (
+  <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+    
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "price"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() => setselected(selected === "price" ? null : "price")}
+    >
+      Sort By Price
+    </button>
+
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "popularity"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() =>
+        setselected(selected === "popularity" ? null : "popularity")
+      }
+    >
+      Sort By Popularity
+    </button>
+
+  </div>
+)}
+<div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
+       {searchdata?.sort((a,b)=>a.price-b.price).map((searchitem)=><Searchcard key={searchitem.id} searchitem={searchitem}/>)}
+    </div>
+    </>
+  )
+}
+
+if(selected==="popularity"){
+  return(
     <>
     <Navbar/>
     <div className="max-w-[80%] container mx-auto ">
@@ -83,6 +129,75 @@ function Searchcard({ searchitem }) {
     onChange={(e)=>setname(e.target.value)}
     />
     </div>
+    {searchdata && searchdata.length > 0 && (
+  <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+    
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "price"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() => setselected(selected === "price" ? null : "price")}
+    >
+      Sort By Price
+    </button>
+
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "popularity"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() =>
+        setselected(selected === "popularity" ? null : "popularity")
+      }
+    >
+      Sort By Popularity
+    </button>
+
+  </div>
+)}
+<div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
+       {searchdata?.sort((a,b)=>b.rating-a.rating).map((searchitem)=><Searchcard key={searchitem.id} searchitem={searchitem}/>)}
+    </div>
+    </>
+  )
+}
+return(
+    <>
+    <Navbar/>
+    <div className="max-w-[80%] container mx-auto ">
+    <input className="w-full h-7 border bg-gray-200 text-xl font-bold text-black p-7 rounded-3xl mt-5" type="text" placeholder="Search here..." 
+    value={name}
+    onChange={(e)=>setname(e.target.value)}
+    />
+    </div>
+    {searchdata && searchdata.length > 0 && (
+  <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+    
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "price"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() => setselected(selected === "price" ? null : "price")}
+    >
+      Sort By Price
+    </button>
+
+    <button
+      className={`px-8 py-3 text-lg font-semibold border-2 rounded-full transition-all duration-300 hover:cursor-pointer
+      ${selected === "popularity"
+        ? "bg-gray-800 text-white border-gray-800"
+        : "bg-white text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white"}`}
+      onClick={() =>
+        setselected(selected === "popularity" ? null : "popularity")
+      }
+    >
+      Sort By Popularity
+    </button>
+
+  </div>
+)}
       <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
        {searchdata?.map((searchitem)=><Searchcard key={searchitem.id} searchitem={searchitem}/>)}
     </div>

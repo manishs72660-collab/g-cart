@@ -97,9 +97,9 @@ function Productdetail(){
 
     {/* Buttons */}
     <div className="flex gap-4 pt-4">
-      <button className="px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-all duration-300" onClick={handleclick}>
+      <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={handleclick}>
         {/* Add to Cart */}
-        {isadd ? "remove" : "add"}
+        {isadd ? "Go to cart" : "Add to cart"}
       </button>
       <button className="px-6 py-3 border border-black rounded-xl hover:bg-black hover:text-white transition-all duration-300">
         Buy Now

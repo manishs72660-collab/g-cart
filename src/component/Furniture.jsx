@@ -70,8 +70,7 @@ function Furniture(){
 
     if(furnituredata.length==0){
         return(
-            <>
-            
+            <> 
             <Shimmer/>
             </>
         )

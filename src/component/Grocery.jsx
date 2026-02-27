@@ -4,7 +4,7 @@ import Shimmer from "./Shimmer";
 import Navbar from "./nav";
 function Grocery(){
     const[grocerydata,setgrocerydata]=useState([]);
-    const[sortbutton,setsortbutton]=useState(null);
+    const[selected,setselected]=useState(null);
     useEffect(()=>{
         async function fetchdata() {
             const response=await fetch("https://dummyjson.com/products/category/groceries");
@@ -12,7 +12,7 @@ function Grocery(){
             setgrocerydata(data.products);
         }
         fetchdata();
-    },[])
+    },[selected])
 
 function Grocerycard({ groceryitem }) {
   return (
@@ -62,7 +62,7 @@ function Grocerycard({ groceryitem }) {
           </div>
 
           <button className="bg-green-500 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-green-600 transition">
-            Add
+           view
           </button>
         </div>
 
@@ -71,7 +71,6 @@ function Grocerycard({ groceryitem }) {
     </Link>
   );
 }
-
    if(grocerydata.length==0){
         return(
             <>
@@ -79,16 +78,64 @@ function Grocerycard({ groceryitem }) {
             </>
         )
     }
+
+
+
+if(selected==="price"){
     return(
+      <>
+        <Navbar/>
+ <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full   hover:cursor-pointer ${selected==="price"? "bg-gray-800 text-white":"bg-white"}`} onClick={()=>setselected(selected==='price'?null:'price')}>
+    Sort By Price
+  </button>
+
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 hover:cursor-pointer ${selected==="popularity"? "bg-gray-800 text-white" :"bg-white"}`} onClick={()=>setselected(selected==='popularity'?null:'popularity')}>
+    Sort By Popularity
+  </button>
+</div>
+      <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
+       {grocerydata.sort((a,b)=>a.price-b.price).map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
+      </div>
+      </>
+    )
+  }
+else if(selected==="popularity"){
+    return(
+      <>
+        <Navbar/>
+ <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full  hover:cursor-pointer ${selected==="price"? "bg-gray-800 text-white":"bg-white"}`} onClick={()=>setselected(selected==='price'?null:'price')}>
+    Sort By Price
+  </button>
+
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full  hover:cursor-pointer ${selected==="popularity"? "bg-gray-800 text-white" :"bg-white"}`} onClick={()=>setselected(selected==='popularity'?null:'popularity')}>
+    Sort By Popularity
+  </button>
+</div>
+      <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
+       {grocerydata.sort((a,b)=>b.rating-a.rating).map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
+      </div>
+      </>
+    )
+  }
+
+
+return(
         <>
         <Navbar/>
-        <div className="container max-w-[60%] mx-auto  gap-3 mt-10 mb-4 justify-center gap-2">
-           <button className="bg-gray-300 text-2xl font-bold text-black border-2 border-white p-2 px-8 rounded-2xl hover:cursor-pointer hover:bg-gray-600">Sort By Price</button>
-           <button className=" bg-gray-300 text-2xl font-bold text-black border-2 border-white p-2 rounded-2xl hover:cursor-pointer hover:bg-gray-600">Sort By Popularity</button>
-        </div>
-        <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
+ <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full   hover:cursor-pointer ${selected==="price"? "bg-gray-800 text-white":"bg-white"}`} onClick={()=>setselected(selected==='price'?null:'price')}>
+    Sort By Pric
+  </button>
+
+  <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 hover:cursor-pointer ${selected==="popularity"? "bg-gray-800 text-white" :"bg-white"}`} onClick={()=>setselected(selected==='popularity'?null:'popularity')}>
+    Sort By Popularity
+  </button>
+</div>
+      <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
        {grocerydata.map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
-       </div>
+      </div>
         </>
     )
 }

@@ -58,7 +58,7 @@ function Watch(){
           </p>
 
           <button className="px-4 py-2 text-sm bg-black text-white rounded-full hover:bg-gray-800 transition">
-            View
+            view
           </button>
         </div>
 
@@ -67,7 +67,6 @@ function Watch(){
     </Link>
   );
 }
-
     return(
         <>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-10 mt-5">

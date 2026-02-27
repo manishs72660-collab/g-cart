@@ -77,7 +77,7 @@ export default function Header(){
     <h1 className="text-5xl font-bold leading-tight">
       Big Deals. Bold Style. <br />
       Smarter Shopping Starts Here. <br />
-      This is TechKart.
+      This is LuxeCart.
     </h1>
 
     <p className="mt-6 text-lg text-gray-600">

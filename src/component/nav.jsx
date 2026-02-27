@@ -19,7 +19,7 @@ export default function Navbar() {
         {/* Left Section */}
         <div className="flex items-center gap-6">
           <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-            G
+            L
           </div>
 
           <div className="flex items-center gap-1 font-semibold cursor-pointer hover:text-green-500 transition">
