@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import Navbar from "./nav";
 function Grocery(){
     const[grocerydata,setgrocerydata]=useState([]);
+    const[sortbutton,setsortbutton]=useState(null);
     useEffect(()=>{
         async function fetchdata() {
             const response=await fetch("https://dummyjson.com/products/category/groceries");
@@ -81,6 +82,10 @@ function Grocerycard({ groceryitem }) {
     return(
         <>
         <Navbar/>
+        <div className="container max-w-[60%] mx-auto  gap-3 mt-10 mb-4 justify-center gap-2">
+           <button className="bg-gray-300 text-2xl font-bold text-black border-2 border-white p-2 px-8 rounded-2xl hover:cursor-pointer hover:bg-gray-600">Sort By Price</button>
+           <button className=" bg-gray-300 text-2xl font-bold text-black border-2 border-white p-2 rounded-2xl hover:cursor-pointer hover:bg-gray-600">Sort By Popularity</button>
+        </div>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
        {grocerydata.map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
        </div>
