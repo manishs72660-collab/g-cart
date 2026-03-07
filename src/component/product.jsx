@@ -79,7 +79,7 @@ function Productcard({ menuItems }) {
     <h1 className="text-2xl font-bold ml-40 mt-10">Discove Best Product </h1>
      <div className="w-[80%] mx-auto mt-20 flex flex-wrap gap-10 justify-center">
           {
-            products.map((menuItems)=><Productcard key={menuItems.id} menuItems={menuItems}></Productcard>)
+            products?.map((menuItems)=><Productcard key={menuItems.id} menuItems={menuItems}></Productcard>)
           }
     </div>
     </>

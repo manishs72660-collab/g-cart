@@ -70,7 +70,7 @@ function Watch(){
     return(
         <>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-10 mt-5">
-        {watchdata.map((watchitem)=><Watchcard key={watchitem.id} watchitem={watchitem}></Watchcard>)}
+        {watchdata?.map((watchitem)=><Watchcard key={watchitem.id} watchitem={watchitem}></Watchcard>)}
         </div>
         </>
     )

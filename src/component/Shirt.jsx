@@ -81,7 +81,7 @@ function Shirt(){
     return(
         <>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-1 mt-5 justify-center">
-        {shirtdata.map((shirtitem)=><Shirtcard key={shirtitem.id} shirtitem={shirtitem}></Shirtcard>)}
+        {shirtdata?.map((shirtitem)=><Shirtcard key={shirtitem.id} shirtitem={shirtitem}></Shirtcard>)}
         </div>
         </>
     )

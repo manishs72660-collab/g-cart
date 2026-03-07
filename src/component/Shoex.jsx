@@ -72,7 +72,7 @@ function Shoescard({ shoesitem }) {
     return(
         <>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-10 mt-5 justify-center">
-        {shoestdata.map((shoesitem)=><Shoescard key={shoesitem.id} shoesitem={shoesitem}></Shoescard>)}
+        {shoestdata?.map((shoesitem)=><Shoescard key={shoesitem.id} shoesitem={shoesitem}></Shoescard>)}
         </div>
         </>
     )
