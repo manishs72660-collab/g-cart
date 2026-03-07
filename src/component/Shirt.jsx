@@ -70,7 +70,7 @@ function Shirt(){
     </Link>
   );
 }
-    if(shirtdata.length==0){
+    if(shirtdata?.length==0){
         return(
             <>
             <Shimmer/>

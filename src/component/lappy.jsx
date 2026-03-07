@@ -70,7 +70,7 @@ function Laptop(){
     </Link>
   );
 }
-    if(phonedata.length==0){
+    if(phonedata?.length==0){
         return(
             <>
             <Shimmer/>

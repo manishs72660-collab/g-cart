@@ -71,7 +71,7 @@ function Grocerycard({ groceryitem }) {
     </Link>
   );
 }
-   if(grocerydata.length==0){
+   if(grocerydata?.length==0){
         return(
             <>
             <Shimmer/>
@@ -134,7 +134,7 @@ return(
   </button>
 </div>
       <div className="flex flex-wrap container max-w-[80%] mx-auto gap-3 mt-5 justify-center">
-       {grocerydata.map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
+       {grocerydata?.map((groceryitem)=><Grocerycard key={groceryitem.id} groceryitem={groceryitem}/>)}
       </div>
         </>
     )

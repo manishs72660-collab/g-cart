@@ -68,7 +68,7 @@ function Productcard({ menuItems }) {
     </Link>
   );
 }
-  if(products.length==0){
+  if(products?.length==0){
     return(
     <Shimmer/>
     )
