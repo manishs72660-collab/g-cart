@@ -83,7 +83,6 @@ function Phonepage(){
     }
     return(
         <>
-        <Navbar/>
          <div className="flex flex-wrap container max-w-[80%] mx-auto gap-10 mt-5 justify-center">
             {phonedata?.map((phonedata)=><Phonecard key={phonedata.id} phonedata={phonedata}></Phonecard>)}
          </div>

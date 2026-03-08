@@ -32,7 +32,6 @@ function Productdetail(){
   }
 return(
         <>
-        <Navbar/>
      <div className="max-w-6xl mx-auto mt-5 p-6 bg-white rounded-3xl shadow-2xl flex flex-col lg:flex-row gap-10">
   <div className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center justify-center">
     <img

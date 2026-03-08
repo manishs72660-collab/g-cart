@@ -6,7 +6,6 @@ import Navbar from "./nav";
 function Fashion(){
     return(
         <>
-        <Navbar/>
         <Shirt/>
         <Shoes/>
         <Watch/>

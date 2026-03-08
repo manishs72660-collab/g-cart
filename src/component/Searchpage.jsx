@@ -164,7 +164,6 @@ if(selected==="popularity"){
 }
 return(
     <>
-    <Navbar/>
     <div className="max-w-[80%] container mx-auto ">
     <input className="w-full h-7 border bg-gray-200 text-xl font-bold text-black p-7 rounded-3xl mt-5" type="text" placeholder="Search here..." 
     value={name}

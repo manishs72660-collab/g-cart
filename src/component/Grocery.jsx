@@ -123,7 +123,6 @@ else if(selected==="popularity"){
 
 return(
         <>
-        <Navbar/>
  <div className="container max-w-[60%] mx-auto flex justify-center gap-4 mt-10 mb-4">
   <button className={`px-8 py-3 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-full   hover:cursor-pointer ${selected==="price"? "bg-gray-800 text-white":"bg-white"}`} onClick={()=>setselected(selected==='price'?null:'price')}>
     Sort By Pric

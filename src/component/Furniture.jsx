@@ -77,7 +77,6 @@ function Furniture(){
     }
     return(
         <>
-        <Navbar/>
         <div className="flex flex-wrap container max-w-[80%] mx-auto gap-10 mt-5 justify-center">
         {furnituredata.map((furnitureitem)=><Furniturecard key={furnitureitem.id} furnitureitem={furnitureitem}></Furniturecard>)}
         </div>
