@@ -6,7 +6,7 @@ import ProductShimmer from "./ProductShimmer";
 function Productdetail(){
     let {id} = useParams();
     const[products,setproducts]=useState(null);
-    const[isadd,setisadd]=useState(false);
+    const[isadd,setisadd]=useState(true);
     useEffect(()=>{
         async function  fetchdata() {
             const response=await fetch(`https://dummyjson.com/products/${id}`);
@@ -15,14 +15,6 @@ function Productdetail(){
         }
         fetchdata();
     },[])
-    
-// function handleclick(){
-//         if(isadd){
-//             setisadd(false);
-//         }else{
-//             setisadd(true);
-//         }
-// }
   if(products===null){
     return(
       <>
@@ -76,9 +68,16 @@ return(
       <p><strong>Return Policy:</strong> {products?.returnPolicy}</p>
     </div>
     <div className="flex gap-4 pt-4">
-      <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>setisadd(true)}>
+      {
+        isadd?( <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>setisadd(false)}>add to cart
+      </button>):
+      (<button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`}>go to cart
+      </button>)
+      }
+      {/* <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>setisadd(true)}>
         {isadd ? "Go to cart" : "Add to cart"}
-      </button>
+      </button> */}
+      
       <button className="px-6 py-3 border border-black rounded-xl hover:bg-black hover:text-white transition-all duration-300">
         Buy Now
       </button>
