@@ -3,6 +3,9 @@ import { useParams } from "react-router";
 import Navbar from "./nav";
 import Rating from "./Rating";
 import ProductShimmer from "./ProductShimmer";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { IncrementItems,DecrementItems,addItems } from "../Stored/Cartsclicer";
 function Productdetail(){
     let {id} = useParams();
     const[products,setproducts]=useState(null);
@@ -21,6 +24,11 @@ function Productdetail(){
       <ProductShimmer/>
       </>
     )
+  }
+  const dispatch=useDispatch();
+  function Handleclick(){
+    setisadd(false);
+    dispatch(addItems(products))
   }
 return(
         <>
@@ -69,7 +77,7 @@ return(
     </div>
     <div className="flex gap-4 pt-4">
       {
-        isadd?( <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>setisadd(false)}>add to cart
+        isadd?( <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>Handleclick()}>add to cart
       </button>):
       (<button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`}>go to cart
       </button>)

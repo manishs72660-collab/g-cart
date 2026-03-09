@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Link} from "react-router"
+import { useSelector } from "react-redux";
 import {
   Briefcase,
   Search,
@@ -12,6 +13,8 @@ import {
 } from "lucide-react";
 
 export default function Navbar() {
+
+  const count=useSelector(state=>state.cartslice.count)
   return (
     <nav className="relative w-full bg-white shadow-sm px-6 md:px-12 py-3">
       <div className="flex items-center justify-between">
@@ -66,11 +69,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 cursor-pointer hover:text-green-500 transition">
+            <Link to="/checkout">
             <ShoppingCart size={18} />
             Cart
             <span className="border border-gray-700 text-xs px-1.5 rounded">
-              0
+              {count}
             </span>
+            </Link>
           </div>
         </div>
       </div>

@@ -9,9 +9,13 @@ import { BrowserRouter,Route,Routes} from "react-router";
 import Searchpage from './component/Searchpage';
 import Secondaryhome from './component/Secondaryhome';
 import Footerpage from './component/Footerpage';
+import {store} from "./Stored/Store"
+import {Provider} from "react-redux"
+import Checkout from './component/Checkout';
 function App() {
   return (
     <>
+    <Provider store={store}>
    <BrowserRouter>
     <Routes>
       <Route element={<Footerpage/>}>
@@ -23,10 +27,13 @@ function App() {
       <Route path='/furniture' element={<Furniture/>}></Route>
       <Route path="/products/detail/:id" element={<Productdetail/>}></Route>
       <Route path="/search/product" element={<Searchpage/>}></Route>
+      
       </Route>
       </Route>
+      <Route path="/checkout" element={<Checkout/>}></Route>
     </Routes>
    </BrowserRouter>
+   </Provider>
    {/* <Furniture/> */}
     </>
   )

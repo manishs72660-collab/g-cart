@@ -3,8 +3,10 @@ import { Search, ShoppingCart, User } from "lucide-react";
 import {Link} from "react-router"
 import image from "../first.png"
 import image1 from "../second.png"
+import { useSelector } from "react-redux";
 
 export default function Header(){
+  const count=useSelector(state=>state.cartslice.count)
     return(
     <>
     <header className="bg-green-400">
@@ -43,16 +45,17 @@ export default function Header(){
       </button>
 
       {/* Cart */}
+      <Link to="/checkout">
       <button className="relative flex items-center space-x-2 p-2 rounded-full bg-white/40 backdrop-blur-md border border-white/30 hover:scale-105 transition duration-300 shadow-md">
         <ShoppingCart size={20} className="text-gray-800" />
         <span className="font-semibold text-gray-800">Cart</span>
 
         {/* Cart Badge */}
         <span className="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md animate-pulse">
-          0
+          {count}
         </span>
       </button>
-
+      </Link> 
     </div>
   </div>
 </div>
