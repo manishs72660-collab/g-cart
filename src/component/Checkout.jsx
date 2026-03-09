@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { IncrementItems,DecrementItems,addItems } from "../Stored/Cartsclicer";
+import Navbar from "./nav"
 function Checkout() {
   const items = useSelector((state) => state.cartslice.items);
    
@@ -16,8 +17,9 @@ function Checkout() {
     dispatch(IncrementItems(checkoutdata))
   }
     return (
+      <>
+      <Navbar/>
       <div style={styles.card}>
-        
         {/* Product Image */}
         <div style={styles.imageBox}>
           <img src={checkoutdata.thumbnail} alt={checkoutdata.title} style={styles.image} />
@@ -44,7 +46,9 @@ function Checkout() {
           <p style={styles.delivery}>Free Delivery</p>
         </div>
       </div>
+      </>
     );
+    
   }
 
   const totalPrice = items.reduce(
