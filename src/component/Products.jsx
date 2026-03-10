@@ -6,6 +6,7 @@ import ProductShimmer from "./ProductShimmer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { IncrementItems,DecrementItems,addItems } from "../Stored/Cartsclicer";
+import { Link } from "react-router";
 function Productdetail(){
     let {id} = useParams();
     const[products,setproducts]=useState(null);
@@ -30,6 +31,8 @@ function Productdetail(){
     setisadd(false);
     dispatch(addItems(products))
   }
+
+  console.log(products);
 return(
         <>
      <div className="max-w-6xl mx-auto mt-5 p-6 bg-white rounded-3xl shadow-2xl flex flex-col lg:flex-row gap-10">
@@ -54,7 +57,7 @@ return(
     </h1>
     <div className="flex items-center gap-4">
       <span className="text-3xl font-bold text-green-600">
-        ₹{(products?.price * 10).toFixed(2)}
+        ₹{products?.price}
       </span>
       <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
         {products?.discountPercentage}% OFF
@@ -79,8 +82,12 @@ return(
       {
         isadd?( <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>Handleclick()}>add to cart
       </button>):
-      (<button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`}>go to cart
-      </button>)
+      (
+      <Link to="/checkout">
+      <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`}>go to cart
+      </button>
+      </Link>
+      )
       }
       {/* <button className={`px-6 py-3  rounded-xl hover:bg-gray-800 transition-all duration-300 ${isadd?"bg-black text-white font-bold":"bg-black text-white font-bold"}`} onClick={()=>setisadd(true)}>
         {isadd ? "Go to cart" : "Add to cart"}

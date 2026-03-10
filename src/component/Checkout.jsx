@@ -12,13 +12,13 @@ function Checkout() {
   function Decrement(){
     dispatch(DecrementItems(checkoutdata))
   }
-
   function Increment(){
     dispatch(IncrementItems(checkoutdata))
   }
+
+  console.log(checkoutdata.price);
     return (
       <>
-      <Navbar/>
       <div style={styles.card}>
         {/* Product Image */}
         <div style={styles.imageBox}>
@@ -38,8 +38,8 @@ function Checkout() {
           <p style={styles.category}>{checkoutdata.category}</p>
 
           <div style={styles.priceBox}>
-            <span style={styles.price}>₹{checkoutdata.price}</span>
-            <span style={styles.oldPrice}>₹{checkoutdata.price + 500}</span>
+            <span style={styles.price}>₹{checkoutdata?.price}</span>
+            <span style={styles.oldPrice}>₹{checkoutdata.price + 100}</span>
             <span style={styles.discount}>{checkoutdata.discountPercentage}% off</span>
           </div>
 
